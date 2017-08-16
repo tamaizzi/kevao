@@ -16,7 +16,7 @@ https://rubygems.org/gems/nginx/versions/0.0.1
 Versão 0.0.2 > 
 https://rubygems.org/gems/nginx/versions/0.0.2
 
-Histórico de Versões NGINX
+# Histórico de Versões NGINX
 
 # NGINX > 1.13.4                                        08 Agosto 2017
 #
