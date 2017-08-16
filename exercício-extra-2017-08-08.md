@@ -120,11 +120,11 @@ https://rubygems.org/gems/nginx/versions/0.0.2
 
 # Histórico de Versões WordPress
 
-# 02/Agosto/2017	WordPress 4.8.1 Maintenance Release -> https://wordpress.org/news/2017/06/evans/
+# 02/Agosto/2017	WordPress 4.8.1 Maintenance Release > https://wordpress.org/news/2017/06/evans/
 
-# 08/Junho/2017	WordPress 4.8 “Evans” -> https://wordpress.org/news/2017/08/wordpress-4-8-1-maintenance-release/
+# 08/Junho/2017	WordPress 4.8 “Evans” > https://wordpress.org/news/2017/08/wordpress-4-8-1-maintenance-release/
 
-# 01/Junho/2017	WordPress 4.8 Release Candidate 2 -> https://wordpress.org/news/2017/06/wordpress-4-8-release-candidate-2/
+# 01/Junho/2017	WordPress 4.8 Release Candidate 2 > https://wordpress.org/news/2017/06/wordpress-4-8-release-candidate-2/
 
 # 25/Maio/2017	WordPress 4.8 Release Candidate
 
