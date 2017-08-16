@@ -18,97 +18,106 @@ https://rubygems.org/gems/nginx/versions/0.0.2
 
 Histórico de Versões NGINX
 
-Changes with nginx 1.13.4 > 08 Agosto 2017
+# NGINX > 1.13.4                                        08 Agosto 2017
+#
+#   *) Feature: the ngx_http_mirror_module.
+#
+#    *) Bugfix: client connections might be dropped during configuration
+#       testing when using the "reuseport" parameter of the "listen"
+#       directive on Linux.
+#
+#    *) Bugfix: request body might not be available in subrequests if it was
+#       saved to a file and proxying was used.
+#
+#    *) Bugfix: cleaning cache based on the "max_size" parameter did not work
+#       on Windows.
+#
+#    *) Bugfix: any shared memory allocation required 4096 bytes on Windows.
+#
+#    *) Bugfix: nginx worker might be terminated abnormally when using the
+#      "zone" directive inside the "upstream" block on Windows.
+#
+#
+#  NGINX > 1.13.3                                        11 Julho 2017
+#
+ #   *) Security: a specially crafted request might result in an integer
+  #     overflow and incorrect processing of ranges in the range filter,
+   #    potentially resulting in sensitive information leak (CVE-2017-7529).
+#
+#
+#  NGINX > 1.13.2                                        27 Junho 2017
 
-*) Feature: the ngx_http_mirror_module.
+ #   *) Change: nginx now returns 200 instead of 416 when a range starting
+  #     with 0 is requested from an empty file.
+#
+#    *) Feature: the "add_trailer" directive.
+ #      Thanks to Piotr Sikora.
+#
+ #   *) Bugfix: nginx could not be built on Cygwin and NetBSD; the bug had
+  #     appeared in 1.13.0.
 
-*) Bugfix: client connections might be dropped during configuration
+   # *) Bugfix: nginx could not be built under MSYS2 / MinGW 64-bit.
+      # Thanks to Orgad Shaneh.
 
-testing when using the "reuseport" parameter of the "listen"
-directive on Linux.
+    # *) Bugfix: a segmentation fault might occur in a worker process when
+       # using SSI with many includes and proxy_pass with variables.
 
-*) Bugfix: request body might not be available in subrequests if it was
-saved to a file and proxying was used.
-
-*) Bugfix: cleaning cache based on the "max_size" parameter did not work
-on Windows.
+    # *) Bugfix: in the ngx_http_v2_module.
+      # Thanks to Piotr Sikora.
 
 
-*) Bugfix: any shared memory allocation required 4096 bytes on Windows.
+# NGINX > 1.13.1                                        30 Maio 2017
 
-*) Bugfix: nginx worker might be terminated abnormally when using the
-"zone" directive inside the "upstream" block on Windows.
+ #   *) Feature: now a hostname can be used as the "set_real_ip_from"
+  #     directive parameter.
 
-Changes with nginx 1.13.3 > 11 Julho 2017
+   # *) Feature: vim syntax highlighting scripts improvements.
 
-*) Security: a specially crafted request might result in an integer
-overflow and incorrect processing of ranges in the range filter,
-potentially resulting in sensitive information leak (CVE-2017-7529).
+    # *) Feature: the "worker_cpu_affinity" directive now works on DragonFly
+     #  BSD.
+      # Thanks to Sepherosa Ziehau.
 
-Changes with nginx 1.13.2 > 27 Junho 2017
+    # *) Bugfix: SSL renegotiation on backend connections did not work when
+       # using OpenSSL before 1.1.0.
 
-*) Change: nginx now returns 200 instead of 416 when a range starting
-with 0 is requested from an empty file.
+    # *) Workaround: nginx could not be built with Oracle Developer Studio
+     #  12.5.
 
-*) Feature: the "add_trailer" directive.
-Thanks to Piotr Sikora.
+    # *) Workaround: now cache manager ignores long locked cache entries when
+     #  cleaning cache based on the "max_size" parameter.
 
-*) Bugfix: nginx could not be built on Cygwin and NetBSD; the bug had
+   # *) Bugfix: client SSL connections were immediately closed if deferred
+    #   accept and the "proxy_protocol" parameter of the "listen" directive
+     #  were used.
 
-appeared in 1.13.0.
-*) Bugfix: nginx could not be built under MSYS2 / MinGW 64-bit.
-	# Thanks to Orgad Shaneh.
-	# *) Bugfix: a segmentation fault might occur in a worker process when
-   # using SSI with many includes and proxy_pass with variables.
-	
- # *) Bugfix: in the ngx_http_v2_module.
-   # Thanks to Piotr Sikora.
-	 
-Changes with nginx 1.13.1 > 30 Maio 2017
+    # *) Bugfix: in the "proxy_cache_background_update" directive.
 
-*) Feature: now a hostname can be used as the "set_real_ip_from"
-directive parameter.
-*) Feature: vim syntax highlighting scripts improvements.
-# *) Feature: the "worker_cpu_affinity" directive now works on DragonFly
- #  BSD.
-  # Thanks to Sepherosa Ziehau.
+    # *) Workaround: now the "tcp_nodelay" directive sets the TCP_NODELAY
+     #  option before an SSL handshake.
 
-# *) Bugfix: SSL renegotiation on backend connections did not work when
-   # using OpenSSL before 1.1.0.
 
-# *) Workaround: nginx could not be built with Oracle Developer Studio
- #  12.5.
+#  NGINX > 1.13.0                                        25 Abril 2017
 
-# *) Workaround: now cache manager ignores long locked cache entries when
- #  cleaning cache based on the "max_size" parameter.
- 
-*) Bugfix: client SSL connections were immediately closed if deferred
+ #   *) Change: SSL renegotiation is now allowed on backend connections.
 
-#   accept and the "proxy_protocol" parameter of the "listen" directive
- #  were used.
+  #  *) Feature: the "rcvbuf" and "sndbuf" parameters of the "listen"
+   #    directives of the mail proxy and stream modules.
 
-# *) Bugfix: in the "proxy_cache_background_update" directive.
+    # *) Feature: the "return" and "error_page" directives can now be used to
+     #  return 308 redirections.
+      # Thanks to Simon Leblanc.
 
-# *) Workaround: now the "tcp_nodelay" directive sets the TCP_NODELAY
- #  option before an SSL handshake.
- 
-Changes with nginx 1.13.0 > 25 Abril 2017
-*) Change: SSL renegotiation is now allowed on backend connections.
-*) Feature: the "rcvbuf" and "sndbuf" parameters of the "listen"
-directives of the mail proxy and stream modules.
-# *) Feature: the "return" and "error_page" directives can now be used to
- #  return 308 redirections.
-  # Thanks to Simon Leblanc.
+    # *) Feature: the "TLSv1.3" parameter of the "ssl_protocols" directive.
 
-# *) Feature: the "TLSv1.3" parameter of the "ssl_protocols" directive.
+    # *) Feature: when logging signals nginx now logs PID of the process which
+       sent the signal.
 
-# *) Feature: when logging signals nginx now logs PID of the process which
-   sent the signal.
+#    *) Bugfix: in memory allocation error handling.
 
-*) Bugfix: in memory allocation error handling.
-*) Bugfix: if a server in the stream module listened on a wildcard
-address, the source address of a response UDP datagram could differ
-from the original datagram destination address.
+ #   *) Bugfix: if a server in the stream module listened on a wildcard
+  #     address, the source address of a response UDP datagram could differ
+   #    from the original datagram destination address.
+   
 
 
 Histórico de Versões WordPress
